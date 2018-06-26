@@ -1,2 +1,2 @@
 # iOS-reddit-app
-app that displays reddit pots
+app that displays reddit posts
