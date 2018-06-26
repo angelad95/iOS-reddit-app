@@ -32,9 +32,9 @@ class PostsViewController: UITableViewController, UISearchResultsUpdating {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postsCell", for: indexPath)
         
         if searchController.isActive == true {
-            cell.textLabel?.text = searchResults[indexPath.row]["description"] as? String
+            cell.textLabel?.text = searchResults[indexPath.row]["title"] as? String
         } else {
-            cell.textLabel?.text = model.featuredPosters[indexPath.row]["description"]
+            cell.textLabel?.text = model.featuredPosters[indexPath.row]["title"]
         }
         return cell
     }
@@ -54,7 +54,8 @@ class PostsViewController: UITableViewController, UISearchResultsUpdating {
         //Get data as array
         //filter data
         //return search results
-        let predicate = NSPredicate(format: "description contains[cd] %@", searchController.searchBar.text!)
+        let predicate = NSPredicate(format: "title contains[cd] %@", searchController.searchBar.text!)
+
         let filteredResults = (model.featuredPosters as NSArray).filtered(using: predicate)
         
         searchResults = filteredResults as [AnyObject]
